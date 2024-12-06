@@ -29,7 +29,7 @@ description_footer: ""
 # disqus_shortname: goodGid
 
 # Statistic Analysis 
-google_analytics_id: G-F215KGK91L # google analytics id
+google_analytics_id: 
 
 # Build settings
 markdown: kramdown
