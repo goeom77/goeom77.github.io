@@ -13,7 +13,7 @@ layout: null
     <generator>Jekyll v{{ jekyll.version }}</generator>
     <image>
       <url>https://start-easy.github.io/assets/img/logo.png</url>
-      <title>Github</title>
+      <title>StartEasy</title>
       <link>https://start-easy.github.io/</link>
     </image>
     {% for post in site.posts limit:30 %}

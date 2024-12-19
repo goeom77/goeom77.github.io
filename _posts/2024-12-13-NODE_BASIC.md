@@ -7,6 +7,8 @@ author: start-easy
 * content
 {:toc}
 
+* 작성 중
+
 ## NodeJS
 
 * 일반적으로 프론트와 백을 같은 언어로 하는 프레임워크는 적다.
@@ -40,6 +42,9 @@ npm init
 # 빠르게 node js의 기능을 화면에 보여주기 위한 용도입니다.
 npm install express
 
+# njs
+# 익스프레스에서 html 내에 javascript를 쓰기위한 패키지
+npm install ejs
 
 ```
 
