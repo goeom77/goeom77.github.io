@@ -15,9 +15,13 @@ author: start-easy
 
 * (주의) 밑의 코드는 네이버 블로그를 크롤링 한 파일입니다. 네이버에서 내부 클래스 명이 자주 바뀌므로 동작하지 않을 수 있습니다.
 
-* 필요성 네이버 지도를 통한 데이터를 
+* 필요성 네이버 지도를 통한 데이터를 가져올때 모든 데이터를 하나씩 입력하는 것이 오랜 시간이 걸립니다.
+
+* 또한 데이터를 다양하게 수집해 필터링 한다면 데이터를 유용하게 관리할 수 있다는 판단하에 시작하게 되었습니다.
 
 ---
+
+* 우선 검색어를 필터링 하기 위해 시도 정보를 가져옵니다.
 
 * 시도 정보 가져오기
 
@@ -108,6 +112,12 @@ print(f"XML 파일이 {sido_xml_filename}에 저장되었습니다.")
 
 ### 크롤링 시작하기
 
+* 가져온 시도 정보를 이용해 키워드를 조합하고 크롤링을 시작합니다.
+
+* 목표는 필터링을 통해 리뷰순으로 만들고, 장소들 정보를 excel로 만드는 것입니다.
+
+* 다만 이 글에는 장소들 정보를 가져오는 것만 기재되어 있습니다.
+
 
 ``` shell
 from selenium import webdriver
@@ -126,7 +136,7 @@ import sys
     
 options = webdriver.ChromeOptions()
 options.add_argument('user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3')
-options.add_argument('window-size=1380,900')
+options.add_argument('window-size=1380,900') ## 윈도우 사이즈 설정
 driver = webdriver.Chrome(options=options)
 
 # 대기 시간
@@ -141,12 +151,12 @@ time.sleep(3)  # 페이지 로딩 대기
 
 # 검색창 찾기
 search_box = driver.find_element(By.CSS_SELECTOR, "input.input_search")
-searchList = "강서구 카페"
+searchList = "강서구 카페"  # 이것은 리스트로 넣어서 따로 for문을 돌려도 됩니다.
 search_box.send_keys(searchList)
 search_box.send_keys(Keys.RETURN)
 
 # 검색 결과 로딩 대기
-time.sleep(5)
+time.sleep(1)
 
 def switch_left():
     ############## iframe으로 왼쪽 포커스 맞추기 ##############
@@ -289,12 +299,6 @@ while(True):
         # 가게 id
         store_id = driver.find_element(By.XPATH,'//div[@class="flicking-camera"]/a').get_attribute('href').split('/')[4]
 
-
-
-
-
-
-
         # 가게 주소
         address = driver.find_element(By.XPATH,'//span[@class="LDgIH"]').text
 
@@ -340,9 +344,4 @@ while(True):
 
 ```
 
-* 기본 코드 실행해보기
 
-
-## Reference
-
-* [Coding-X 쉽고 재밌는 웹개발](https://coding-x.com/class/10046/%EC%89%BD%EA%B3%A0-%EC%9E%AC%EB%B0%8C%EB%8A%94-%EC%9B%B9%EA%B0%9C%EB%B0%9C4-node-js)
