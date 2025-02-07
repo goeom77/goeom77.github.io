@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  " [Oracle] 1. Oracle 질의어어(이론편) "
+title:  " [Oracle] 1. Oracle 질의어(이론편) "
 categories: Oracle
 author: start-easy
 ---
