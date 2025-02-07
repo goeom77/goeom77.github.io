@@ -12,9 +12,9 @@ layout: null
     <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
     <generator>Jekyll v{{ jekyll.version }}</generator>
     <image>
-      <url>https://start-easy.goeom77.github.io/assets/img/logo.png</url>
+      <url>https://goeom77.github.io/start-easy.github.io/assets/img/logo.png</url>
       <title>StartEasy</title>
-      <link>https://start-easy.goeom77.github.io/</link>
+      <link>https://goeom77.github.io/start-easy.github.io/</link>
     </image>
     {% for post in site.posts limit:30 %}
       <item>

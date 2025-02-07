@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: http://start-easy.goeom77.github.io/sitemap.xml
+Sitemap: https://goeom77.github.io/start-easy.github.io/sitemap.xml
