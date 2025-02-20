@@ -11,13 +11,24 @@ author: start-easy
 
 ![](/assets/img/java/openjdk.png)
 
-3월과 6월마다 새로운 버전을 릴리즈하며 업데이트하는 JDK
+3월과 6월마다 새로운 버전을 릴리즈합니다.
+
+결론적으로 open JDK는 '무료' 입니다.
+
+오라클, 레드햇, Azul, AdoptOpenJDK 등의 OpenJDK 바이너리 파일을 제공받을 수 있습니다.
+
+‘Java SE의 무료 및 오픈 소스 구현체’로 Java SE와 같은 API와 기능을 제공하며 호환성을 유지합니다.
+
 
 ## Oracle JDK란 무엇일까?
 
 역사를 확인해보면, 최초 썬 마이크로시스템즈에서 출시된 이후 Java를 Oracle에서 2010년 인수하면서 변화가 생겼습니다.
 
 Java 언어 자체는 GPL라이센스로 무료이고, Java를 실행시키기 위한 JVM과 JRE를 합친 JDK가 유료가 된 것입니다.
+
+결론, 구독 및 유료로 사용하는 만큼 Oracle JDK가 제공하는 서비스들이 있고, 보안 요소들이 있습니다.
+하지만 대체가 가능하거나 안쓰는 부분이 존재한다면 무료인 Oracle JDK도 충분히 사용하기 편하다는 것입니다.
+결국 개발자 개인의 생각에 따라 바뀌는 문제로 보입니다.
 
 > JVM (Java Virtual Machine)
 ```
@@ -96,6 +107,8 @@ ex) 웹 브라우징, 일발적인 사무용 애플리케이션을 위해 사용
 보안 패치를 하려면, 제한되고 2024년 9월 유료 구독이 필요
 
 ### Java, JDK, JRE의 차이점
+
+![](/assets/img/java/jdk.png)
 
 Java : 프로그램 언어(GPL)
 
