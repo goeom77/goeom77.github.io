@@ -11,12 +11,14 @@ author: start-easy
 
 디자인 패턴 22가지는 코드 확장성을 개선하기 위한 코드가 대부분이며, 개방 폐쇄 원칙을 기본으로 합니다.
 
-| p134
+'''shell
+p134
 설계 원칙을 배울 때, 설계 원칙의 정의를 이해하는 것보다 훨씬 중요한 것은 왜 그 원칙이 생겨날 수밖에 없었는지를 생각하여 목적을 파악하는 것이다.
-
-- 고려사항
+'''
+> 고려사항
     
-  ### 1. **단일 책임 원칙 (SRP, Single Responsibility Principle)**
+  ### 1. **단일 책임 원칙**
+  (SRP, Single Responsibility Principle)
   
   "클래스는 단 하나의 책임만 가져야 한다."
   
@@ -101,17 +103,18 @@ author: start-easy
   - `DatabaseService` 클래스가 `MySQLDatabase`를 직접 의존하면, 나중에 `PostgreSQLDatabase`로 변경할 때 수정해야 하는 코드가 많아짐.
   - `DatabaseService`가 `DatabaseInterface`에 의존하면, 다양한 데이터베이스 구현체를 쉽게 교체 가능.
 
-단일 책임 원칙을 지키기 위해 고려할 사항
+> 단일 책임 원칙을 지키기 위해 고려할 사항
 
-1. 클래스에 속성이 너무 많은 경우 - 가독성과 유지 보수성에 영향을 끼치지 않도록 구현
-2. 다른 클래스에 의존하면 높은 응집도, 낮은 결합도의 코드 설계 사상과 부합하지않는다.
-3. private 메서드가 많으면 해당 메서드 들을 별도의 클래스로 분리하고 더 많은 클래스에서 사용할 수 있도록 public 메서드로 변경
-4. 이름을 일반적인 단어로 명시하지 말것(manager, context)
-5. 테이블을 분리했을 때 Serializer, Deserializer 처럼 하나를 바꾸면 다른것도 바뀌는 게 있는지 확인
-- 클래스 설계 외에 단일 책임 원칙을 적용할 수 있는 설계에는 어떤 것이 있을 수 있을까?
+    1. 클래스에 속성이 너무 많은 경우 - 가독성과 유지 보수성에 영향을 끼치지 않도록 구현
+    2. 다른 클래스에 의존하면 높은 응집도, 낮은 결합도의 코드 설계 사상과 부합하지않는다.
+    3. private 메서드가 많으면 해당 메서드 들을 별도의 클래스로 분리하고 더 많은 클래스에서 사용할 수 있도록 public 메서드로 변경
+    4. 이름을 일반적인 단어로 명시하지 말것(manager, context)
+    5. 테이블을 분리했을 때 Serializer, Deserializer 처럼 하나를 바꾸면 다른것도 바뀌는 게 있는지 확인
+
+> 클래스 설계 외에 단일 책임 원칙을 적용할 수 있는 설계에는 어떤 것이 있을 수 있을까?
     1. 기능별로 패키지/모듈 구분
     
-    ```jsx
+    ```shell
     com.example.app
     │── domain
     │   ├── user
@@ -242,27 +245,27 @@ author: start-easy
     ```
     
 
-추가> 원자 연산을 왜 해야하는가?
+> 추가 : 원자 연산을 왜 해야하는가?
 
-모든 클래스를 락을 거는 것은 비용의 문제가 있다. 따라서 syncronized를 사용하지 않고 연산을 하는 것의 필요성이 있다. 이와 관련된 연산이 원자 연산이다.
+    모든 클래스를 락을 거는 것은 비용의 문제가 있다. 따라서 syncronized를 사용하지 않고 연산을 하는 것의 필요성이 있다. 이와 관련된 연산이 원자 연산이다.
 
-**원자 연산 작동 방식**: CPU의 **CAS(Compare-And-Swap) 연산**을 이용하여 동기화 없이 원자적 연산 수행
+    **원자 연산 작동 방식**: CPU의 **CAS(Compare-And-Swap) 연산**을 이용하여 동기화 없이 원자적 연산 수행
 
-**Sync 작동 방식**: 객체 수준에서 **모니터 락(Monitor Lock)**을 획득하여 스레드가 순차적으로 실행되도록 보장
+    **Sync 작동 방식**: 객체 수준에서 **모니터 락(Monitor Lock)**을 획득하여 스레드가 순차적으로 실행되도록 보장
 
-참고 : https://www.baeldung.com/java-atomic-variables
+    참고 : https://www.baeldung.com/java-atomic-variables
 
 
-KISS 원칙과 YAGNI 원칙
+* KISS 원칙과 YAGNI 원칙
 
-KISS : Keep It Simple and Stupid, Keep it Short and Simple, Keep it Simple and Straight forward
+    KISS : Keep It Simple and Stupid, Keep it Short and Simple, Keep it Simple and Straight forward
 
-모든 것을 구현하거나, 짧은 코드가 정답이 아니라 코드 구현이 쉽고 가독성이 좋은 코드를 선택해야한다.
+    모든 것을 구현하거나, 짧은 코드가 정답이 아니라 코드 구현이 쉽고 가독성이 좋은 코드를 선택해야한다.
 
 > YAGNI : 추후 사용하게 될 코드를 고려하여 미리 작성할 필요가 없다.
 > 
 
-앞으로 개발 가능한 것을 고려하지 말라는 뜻인가?
+* 앞으로 개발 가능한 것을 고려하지 말라는 뜻인가?
 
 - **장기적 비전 부족**: 때때로 YAGNI는 장기적인 시스템 설계나 아키텍처의 발전을 간과할 수 있습니다. 이는 추후 시스템이 확장될 때 문제가 될 수 있습니다.
 - **과도한 단순화**: 일부 경우에는 YAGNI가 너무 강조되어 시스템의 확장성이나 유연성이 무시될 수 있습니다. 이는 장기적으로 더 많은 작업을 초래할 수 있습니다.
