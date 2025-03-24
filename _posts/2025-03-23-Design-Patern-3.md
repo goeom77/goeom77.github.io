@@ -4,10 +4,12 @@ title:  "[Spring] 디자인 패턴의 아름다움 3일차"
 categories: Spring
 author: start-easy
 ---
+* content
+{:toc}
 
-SOLID, KISS, YAGNI, DRY, LoD
+* SOLID, KISS, YAGNI, DRY, LoD
 
-디자인 패턴 22가지는 코드 확장성을 개선하기 위한 코드가 대부분이며, 개방 폐쇄 원칙을 기본으로 한다.
+디자인 패턴 22가지는 코드 확장성을 개선하기 위한 코드가 대부분이며, 개방 폐쇄 원칙을 기본으로 합니다.
 
 | p134
 설계 원칙을 배울 때, 설계 원칙의 정의를 이해하는 것보다 훨씬 중요한 것은 왜 그 원칙이 생겨날 수밖에 없었는지를 생각하여 목적을 파악하는 것이다.
