@@ -15,9 +15,11 @@ author: start-easy
 > p134
 > 설계 원칙을 배울 때, 설계 원칙의 정의를 이해하는 것보다 훨씬 중요한 것은 왜 그 원칙이 생겨날 수밖에 없었는지를 생각하여 목적을 파악하는 것이다.
 
-### SOLID
+## SOLID
     
-**1. 단일 책임 원칙**(SRP, Single Responsibility Principle)
+**1. 단일 책임 원칙**
+
+### (SRP, Single Responsibility Principle)
   
 "클래스는 단 하나의 책임만 가져야 한다."
   
@@ -33,7 +35,9 @@ author: start-easy
 
 ---
 
-**2. 개방-폐쇄 원칙** (OCP, Open-Closed Principle)
+**2. 개방-폐쇄 원칙** 
+
+### (OCP, Open-Closed Principle)
 
 "확장에는 열려 있어야 하고, 수정에는 닫혀 있어야 한다."
 
@@ -50,7 +54,9 @@ author: start-easy
 
 ---
 
-**3. 리스코프 치환 원칙** (LSP, Liskov Substitution Principle)
+**3. 리스코프 치환 원칙** 
+
+### (LSP, Liskov Substitution Principle)
 
 "서브타입은 기반 타입을 대체할 수 있어야 한다."
 
@@ -68,7 +74,9 @@ author: start-easy
 
 ---
 
-**4. 인터페이스 분리 원칙** (ISP, Interface Segregation Principle)
+**4. 인터페이스 분리 원칙** 
+
+### (ISP, Interface Segregation Principle)
 
 "클라이언트는 자신이 사용하지 않는 메서드에 의존하지 않아야 한다."
 
@@ -86,7 +94,9 @@ author: start-easy
 
 ---
 
-**5. 의존 역전 원칙** (DIP, Dependency Inversion Principle)
+**5. 의존 역전 원칙** 
+
+### (DIP, Dependency Inversion Principle)
 
 "상위 모듈이 하위 모듈에 의존해서는 안 된다. 둘 다 추상화에 의존해야 한다."
 
