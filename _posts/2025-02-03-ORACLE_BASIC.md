@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  " [Oracle] 1. Oracle 시작하기(이론편) "
+title:  " [Oracle] 1. Oracle 문법 - Select "
 categories: Oracle
 author: start-easy
 ---
