@@ -15,8 +15,6 @@ Tobby님의 강연을 들으면서 IntelliJ에 대해 얼마나 자세히 알고
 
 매일 쓰면서도 자세히 모른다는 사실을 직면했습니다.
 
-한번 알아볼게요
-
  
 
 우선 [jet brain 사이트](https://www.jetbrains.com/help/idea/getting-started.html)로로 가시면 자세히 설명되어 있는 것을 알수 있습니다.

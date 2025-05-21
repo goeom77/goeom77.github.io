@@ -115,88 +115,89 @@ author: start-easy
     5. 테이블을 분리했을 때 Serializer, Deserializer 처럼 하나를 바꾸면 다른것도 바뀌는 게 있는지 확인
 
 * 클래스 설계 외에 단일 책임 원칙을 적용할 수 있는 설계에는 어떤 것이 있을 수 있을까?
-    1. 기능별로 패키지/모듈 구분
-    
-    ```shell
-    com.example.app
-    │── domain
-    │   ├── user
-    │   │   ├── User.java
-    │   │   ├── UserRepository.java
-    │   │   ├── UserService.java
-    │   │   ├── UserController.java
-    │   │   └── dto
-    │   │       ├── UserRequestDto.java
-    │   │       └── UserResponseDto.java
-    │   ├── order
-    │   │   ├── Order.java
-    │   │   ├── OrderRepository.java
-    │   │   ├── OrderService.java
-    │   │   ├── OrderController.java
-    │   │   └── dto
-    │   │       ├── OrderRequestDto.java
-    │   │       └── OrderResponseDto.java
-    ➡️ User와 Order 도메인을 분리하여 단일 책임 원칙을 지킴
-    ➡️ 각 도메인은 독립적으로 관리될 수 있음
-    ```
-    
-    2. 기능별로 서비스를 분리
-    
-    ```jsx
-    public class UserService {
-        private final UserRepository userRepository;
-    
-        public void createUser(User user) {
-            userRepository.save(user);
+1. 기능별로 패키지/모듈 구분
+
+```shell
+com.example.app
+│── domain
+│   ├── user
+│   │   ├── User.java
+│   │   ├── UserRepository.java
+│   │   ├── UserService.java
+│   │   ├── UserController.java
+│   │   └── dto
+│   │       ├── UserRequestDto.java
+│   │       └── UserResponseDto.java
+│   ├── order
+│   │   ├── Order.java
+│   │   ├── OrderRepository.java
+│   │   ├── OrderService.java
+│   │   ├── OrderController.java
+│   │   └── dto
+│   │       ├── OrderRequestDto.java
+│   │       └── OrderResponseDto.java
+➡️ User와 Order 도메인을 분리하여 단일 책임 원칙을 지킴
+➡️ 각 도메인은 독립적으로 관리될 수 있음
+```
+
+2. 기능별로 서비스를 분리
+
+```jsx
+public class UserService {
+    private final UserRepository userRepository;
+
+    public void createUser(User user) {
+        userRepository.save(user);
+    }
+}
+
+public class EmailService {
+    public void sendEmail(User user) {
+        // 이메일 전송 로직
+    }
+}
+
+public class LogService {
+    public void logActivity(User user) {
+        // 로그 기록 로직
         }
+}
+
+```
+
+3. CQRS 패턴
+
+읽는 것과 수정,삭제를 별로로 분리하는 것
+
+```jsx
+public class UserCommandService {
+    public void createUser(User user) {
+        // 유저 생성 로직
     }
-    
-    public class EmailService {
-        public void sendEmail(User user) {
-            // 이메일 전송 로직
-        }
+}
+
+public class UserQueryService {
+    public User getUserById(Long id) {
+        // 유저 조회 로직
     }
-    
-    public class LogService {
-        public void logActivity(User user) {
-            // 로그 기록 로직
-    	  }
+}
+```
+
+4. 이벤트 기반 아키텍처 적용
+
+- 카프카 코드와 서비스 코드를 분리
+
+```jsx
+public class OrderService {
+    private final KafkaTemplate<String, OrderEvent> kafkaTemplate;
+
+    public void placeOrder(Order order) {
+        // 주문 저장 로직
+        kafkaTemplate.send("order-events", new OrderEvent(order.getId(), "ORDER_CREATED"));
     }
-    
-    ```
-    
-    3. CQRS 패턴
-    
-    읽는 것과 수정,삭제를 별로로 분리하는 것
-    
-    ```jsx
-    public class UserCommandService {
-        public void createUser(User user) {
-            // 유저 생성 로직
-        }
-    }
-    
-    public class UserQueryService {
-        public User getUserById(Long id) {
-            // 유저 조회 로직
-        }
-    }
-    ```
-    
-    4. 이벤트 기반 아키텍처 적용
-    - 카프카 코드와 서비스 코드를 분리
-    
-    ```jsx
-    public class OrderService {
-        private final KafkaTemplate<String, OrderEvent> kafkaTemplate;
-    
-        public void placeOrder(Order order) {
-            // 주문 저장 로직
-            kafkaTemplate.send("order-events", new OrderEvent(order.getId(), "ORDER_CREATED"));
-        }
-    }
-    
-    ```
+}
+
+```
     
 
 * 리스코프 치환 원칙 안티 패턴
